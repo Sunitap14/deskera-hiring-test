@@ -1,6 +1,7 @@
 import java.util.Collection;
 
 public class EmployeesManager {
+  ArrayList<Employee> emp = new ArrayList<Employee>();
 
   /**
    * Implement EmployeesManager to manage all employees of a company
@@ -15,7 +16,10 @@ public class EmployeesManager {
    */
   String addEmployee(Employee employee) {
     // TODO - implement this
-    return null;
+    emp.add(employee);    
+    String str=employee.firstName + employee.birthDate;
+    return str;
+    
   }
 
   /**
@@ -25,8 +29,15 @@ public class EmployeesManager {
    * @return
    */
   Employee findEmployee(String employeeId) {
-    // TODO - implement this
+    for(Employee e: emp)
+					{
+						if(employeeId == e.id)
+						{
+							return e;
+						}
+					}
     return null;
+    
   }
 
   /**
@@ -35,7 +46,18 @@ public class EmployeesManager {
    * @return
    */
   Collection<Employee> findEmployee(int years) {
-    return null;
+    
+    Collection<Employee> emp1 = new ArrayList<Employee>();
+					for(Employee e: emp)
+					{
+						if(years < e.ageInYears)
+						{
+						emp1.add(e);
+						}
+					}
+    return EmployeeListByAge;
+					
+    
   }
 
   /**
@@ -46,6 +68,16 @@ public class EmployeesManager {
    */
   boolean removeEmployee(String employeeId) {
     // TODO - implement this
+    boolean flag=false;
+    for(Employee e: emp)
+					{
+						if(employeeId == e.id)
+						{
+							 emp.remove(e); 
+              flag=true;
+						}
+					}
+    return flag;
     return false;
   }
 
@@ -56,7 +88,8 @@ public class EmployeesManager {
    */
   Collection<Employee> listEmployees() {
     // TODO - implement this
-    return null;
+    
+    return emp;
   }
 }
 
